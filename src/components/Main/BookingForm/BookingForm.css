@@ -1,0 +1,97 @@
+.booking-form {
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 12px;
+    width: 400px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.title {
+    color: #C8963E;
+    font-size: 30px;
+    margin-bottom: 4px;
+}
+
+.booking-form input,
+.booking-form select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    width: 100%;
+}
+
+.booking-form button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #C8963E;
+    color: white;
+    cursor: pointer;
+}
+
+.field {
+    width: 100%;
+}
+
+.error {
+    color: red;
+}
+
+.error-border {
+    border: 1px solid red !important;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #C8963E;
+    color: white;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    transition: 0.2s;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.spinner {
+    width: 16px;
+    height: 16px;
+
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-top: 2px solid white;
+    border-radius: 50%;
+
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 420px) {
+    .booking-form {
+        width: 100%;
+        padding: 16px;
+    }
+
+    .title {
+        font-size: 24px;
+    }
+}

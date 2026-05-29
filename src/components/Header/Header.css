@@ -1,0 +1,50 @@
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 20px 40px;
+
+    background-color: #111;
+    color:white;
+}
+
+.header-name h1 {
+    margin: 0;
+    font-size: 28px;
+    padding-right: 40px;
+}
+
+.header-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.header-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: opacity 0.2s ease;
+}
+
+.header-nav a:hover {
+    opacity: 0.7;
+}
+
+.header-nav-button {
+    background-color: #C8963E;
+    padding: 6px;
+    border-radius: 4px;
+}
+
+@media (max-width: 420px) {
+    .header-name h1{
+        font-size: 16px;
+    }
+
+    .header-nav a {
+        font-size: 14px;
+    }
+}
