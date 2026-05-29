@@ -1,36 +1,82 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🍽️ Saveur Booking
 
-## Getting Started
+Saveur Booking — веб-приложение для онлайн-бронирования столиков в ресторане, созданное с использованием **Next.js, React Hook Form и TypeScript**.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Функциональность
+
+- Форма бронирования столика
+- Валидация полей (имя, телефон, дата, время, гости)
+- Выбор времени из фиксированных слотов (12:00–22:00)
+- Лоадер при отправке формы
+- Экран подтверждения бронирования
+- Возможность повторного бронирования
+
+---
+
+# Архитектура проекта
+
+Проект построен по компонентному подходу с разделением ответственности:
+
+## Основные компоненты
+- **Main** — управляет состоянием приложения (`status`, `bookingData`)
+- **BookingForm** — отвечает за ввод и валидацию данных
+- **Confirmation** — отображает успешное бронирование
+
+## Почему выбрана именно такая архитектура
+
+- Компонентный подход (папка `src/components`)
+	- Почему: UI разделён на небольшие, переиспользуемые компоненты — легче тестировать, переиспользовать и поддерживать. Форма только собирает/валидирует данные, Main управляет состоянием и переключением экранов.
+	- Где это видно: `src/components/Main`, `src/components/Header`, `src/components/Main/BookingForm`, `src/components/Main/Confirmation`.
+
+- Разделение логики и утилит
+	- Почему: Вспомогательные функции (форматирование даты, валидация, константы временных слотов) вынесены в `src/utils` и `src/constants` чтобы избежать дублирования и упростить тестирование.
+	- Где это видно: `src/utils/formatDate.ts`, `src/utils/validation.ts`, `src/constants/timeSlots.ts`.
+
+- Простая локальная модель состояния
+	- Почему: Для этого небольшого проекта не нужен глобальный менеджер состояния (redux/mobx). Поднятие состояния в `Main` (локальный state и пропсы) даёт прозрачность и простоту. Если приложение вырастет, можно постепенно ввести Context API или Zustand.
+	- Где это видно: `src/components/Main/Main.tsx` (управление `status`, `bookingData`).
+
+- CSS-модули/файлы рядом с компонентом
+	- Почему: Стили находятся рядом с компонентами (`.css` рядом с `.tsx`) — это улучшает локализацию стилей и делает переиспользование и рефакторинг проще.
+
+## TODO
+
+- Добавить серверный API и БД для сохранения и управления бронированиями.
+- Перейти на Zustand при мастабировании
+
+
+## Локальный запуск
+
+Инструкции, как запустить проект локально:
+
+1. Склонируйте репозиторий:
+
+```powershell
+git clone https://github.com/MaximxLeon/SaveurBooking.git
+cd SaveurBooking
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Установите зависимости (npm):
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Запустите dev-сервер:
 
-## Learn More
+```
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Для production-сборки и запуска:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+npm run build
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+После запуска dev-сервера откройте http://localhost:3000 в браузере.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
