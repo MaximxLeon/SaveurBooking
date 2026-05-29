@@ -1,29 +1,33 @@
-
 .success {
     margin-top: 20px;
     padding: 24px;
     width: 400px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
     background: #f5f5f5;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-sizing: border-box;
 }
 
 .success h3 {
     color: #C8963E;
     font-size: 22px;
+    margin: 0;
 }
 
 .success button {
     margin-top: 10px;
-    padding: 10px 14px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
     background-color: #C8963E;
     color: white;
-
     cursor: pointer;
-
     transition: 0.2s;
+    width: 100%;
 }
